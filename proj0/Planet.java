@@ -61,4 +61,30 @@ public class Planet {
         return sum;
     }
 
+    public void update(double dt,double fX,double fY){
+        double ax=fX/this.mass;
+        double ay=fY/this.mass;
+        this.xxVel+=ax*dt;
+        this.yyVel+=ay*dt;
+        this.xxPos+=xxVel*dt;
+        this.yyPos+=yyVel*dt;
+    }
+
+    public double readRadius(String path) {
+        In in = new In(path);
+
+        /* Each line has the rank of a country, then its
+         * name, then its production in metric tons, and
+         * finally the fraction of world salt output it produces. */
+        int count = in.readInt();
+
+        return in.readDouble();
+    }
+
+    public void draw(){
+//        System.out.println("images/"+this.imgFileName);
+        StdDraw.picture(this.xxPos,this.yyPos,"images/"+this.imgFileName);
+    }
+
+
 }
