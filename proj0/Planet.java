@@ -1,12 +1,12 @@
 public class Planet {
-    static final double G=6.67*Math.pow(10,-11);
-    double xxPos;
-    double yyPos;
-    double yyVel;
-    double xxVel;
-    double mass;
+    private static final double G=6.67*Math.pow(10,-11);
+    public double xxPos;
+    public double yyPos;
+    public double yyVel;
+    public double xxVel;
+    public double mass;
 
-    String imgFileName;
+    public String imgFileName;
 
     public Planet(double xP, double yP, double xV, double yV, double m, String img) {
 
@@ -36,10 +36,10 @@ public class Planet {
     }
 
     public double calcForceExertedByX(Planet p){
-        return this.calcForceExertedBy(p)*(Math.abs(p.xxPos-this.xxPos))/this.calcDistance(p);
+        return this.calcForceExertedBy(p)*((p.xxPos-this.xxPos))/this.calcDistance(p);
     }
     public double calcForceExertedByY(Planet p){
-        return this.calcForceExertedBy(p)*(Math.abs(p.yyPos-this.yyPos))/this.calcDistance(p);
+        return this.calcForceExertedBy(p)*((p.yyPos-this.yyPos))/this.calcDistance(p);
     }
 
     public double calcNetForceExertedByX(Planet[] allp){
@@ -70,16 +70,16 @@ public class Planet {
         this.yyPos+=yyVel*dt;
     }
 
-    public double readRadius(String path) {
-        In in = new In(path);
-
-        /* Each line has the rank of a country, then its
-         * name, then its production in metric tons, and
-         * finally the fraction of world salt output it produces. */
-        int count = in.readInt();
-
-        return in.readDouble();
-    }
+//    public double readRadius(String path) {
+//        In in = new In(path);
+//
+//        /* Each line has the rank of a country, then its
+//         * name, then its production in metric tons, and
+//         * finally the fraction of world salt output it produces. */
+//        int count = in.readInt();
+//
+//        return in.readDouble();
+//    }
 
     public void draw(){
 //        System.out.println("images/"+this.imgFileName);
